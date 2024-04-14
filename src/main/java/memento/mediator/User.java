@@ -15,7 +15,7 @@ public class User
     public void sendMessage(ChatServer server, String receiver, String messageContent)
     {
         Message message = new Message(messageContent, this);
-        server.sendMessage(this, receiver, message);
+        server.sendMessage(receiver, message);
     }
 
     public void receiveMessage(Message message)
