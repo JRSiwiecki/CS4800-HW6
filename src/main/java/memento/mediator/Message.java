@@ -6,12 +6,14 @@ public class Message
 {
     private final String content;
     private final User sender;
+    private final User[] receivers;
     private final Timestamp timestamp;
 
-    public Message(String content, User sender)
+    public Message(String content, User sender, User[] receivers)
     {
         this.content = content;
         this.sender = sender;
+        this.receivers = receivers;
         timestamp = new Timestamp(System.currentTimeMillis());
     }
 
@@ -23,6 +25,11 @@ public class Message
     public User getSender()
     {
         return sender;
+    }
+
+    public User[] getReceivers()
+    {
+        return receivers;
     }
 
     public Timestamp getTimestamp()
