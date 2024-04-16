@@ -47,7 +47,7 @@ public class User
     {
         for (Message message : messageBox)
         {
-            System.out.println(message);
+            System.out.println("To [" + username + "] - " + message);
         }
     }
 }
