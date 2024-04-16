@@ -6,6 +6,7 @@ public class User
 {
     private final String username;
     private final ArrayList<Message> messageBox = new ArrayList<>();
+    private final ChatHistory chatHistory = new ChatHistory();
 
     public User(String username)
     {
@@ -14,8 +15,9 @@ public class User
 
     public void sendMessage(ChatServer server, User[] receivers, String messageContent)
     {
-        Message message = new Message(messageContent, this);
+        Message message = new Message(messageContent, this, receivers);
         server.sendMessage(this, receivers, message);
+        chatHistory.addMessageToHistory(message);
     }
 
     public void receiveMessage(Message message)
@@ -23,9 +25,10 @@ public class User
         messageBox.add(message);
     }
 
-    public void undoLastMessageSent(ChatServer server)
+    public void undoLastMessageSent(ChatServer chatServer)
     {
-        server.undoLastMessageSent(this);
+        chatServer.undoMessage(chatHistory.getLastMessageSent());
+        chatHistory.getMessageList().remove(chatHistory.getLastMessageSent());
     }
 
     public String getUsername()
@@ -36,6 +39,11 @@ public class User
     public ArrayList<Message> getMessageBox()
     {
         return messageBox;
+    }
+
+    public ChatHistory getChatHistory()
+    {
+        return chatHistory;
     }
 
     public String toString()
