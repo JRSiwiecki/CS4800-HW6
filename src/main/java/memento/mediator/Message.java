@@ -29,4 +29,9 @@ public class Message
     {
         return timestamp;
     }
+
+    public String toString()
+    {
+        return "[" + content + "] from [" + sender.toString() + "] at [" + timestamp + "]";
+    }
 }

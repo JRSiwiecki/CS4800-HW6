@@ -37,4 +37,9 @@ public class User
     {
         return messageBox;
     }
+
+    public String toString()
+    {
+        return username;
+    }
 }
