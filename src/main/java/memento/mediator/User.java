@@ -12,10 +12,10 @@ public class User
         this.username = username;
     }
 
-    public void sendMessage(ChatServer server, String receiver, String messageContent)
+    public void sendMessage(ChatServer server, ArrayList<User> receivers, String messageContent)
     {
         Message message = new Message(messageContent, this);
-        server.sendMessage(receiver, message);
+        server.sendMessage(this, receivers, message);
     }
 
     public void receiveMessage(Message message)
