@@ -27,7 +27,7 @@ public class ChatServer
         {
             ArrayList<User> blockList = getBlockMap(receiver);
 
-            if (blockList.contains(sender))
+            if (blockList.contains(sender) || sender.equals(receiver))
             {
                 continue;
             }
@@ -49,11 +49,13 @@ public class ChatServer
     {
         ArrayList<User> blockList = getBlockMap(blocker);
 
-        if (!blockList.contains(blockee))
+        if (blockList.contains(blockee) || blocker.equals(blockee))
         {
-            blockList.add(blockee);
-            blockMap.put(blocker, blockList);
+            return;
         }
+
+        blockList.add(blockee);
+        blockMap.put(blocker, blockList);
     }
 
     public void unblockUser(User blocker, User blockee)
