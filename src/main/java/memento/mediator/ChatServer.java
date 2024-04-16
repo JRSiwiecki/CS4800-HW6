@@ -7,6 +7,7 @@ public class ChatServer
 {
     private final ArrayList<User> registeredUsers = new ArrayList<>();
     private final HashMap<User, ArrayList<User>> blockMap = new HashMap<>();
+    private final ChatHistory chatHistory = new ChatHistory();
 
     public void registerUser(User user)
     {
@@ -34,11 +35,6 @@ public class ChatServer
 
             receiver.receiveMessage(message);
         }
-    }
-
-    public void undoLastMessageSent(User user)
-    {
-
     }
 
     public void blockUser(User blocker, User blockee)
