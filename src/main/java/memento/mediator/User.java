@@ -42,4 +42,12 @@ public class User
     {
         return username;
     }
+
+    public void printMessageBox()
+    {
+        for (Message message : messageBox)
+        {
+            System.out.println(message);
+        }
+    }
 }
