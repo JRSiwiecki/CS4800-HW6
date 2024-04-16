@@ -53,9 +53,11 @@ public class User
 
     public void printMessageBox()
     {
+        System.out.println("--- " + username + "'S MESSAGE BOX ---");
         for (Message message : messageBox)
         {
-            System.out.println("To [" + username + "] - " + message);
+            System.out.println(message);
         }
+        System.out.println("-------------------------------------");
     }
 }
