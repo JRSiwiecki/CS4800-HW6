@@ -7,7 +7,6 @@ public class ChatServer
 {
     private final ArrayList<User> registeredUsers = new ArrayList<>();
     private final HashMap<User, ArrayList<User>> blockMap = new HashMap<>();
-    private final ChatHistory chatHistory = new ChatHistory();
 
     public void registerUser(User user)
     {
@@ -34,6 +33,15 @@ public class ChatServer
             }
 
             receiver.receiveMessage(message);
+        }
+    }
+
+    public void undoMessage(Message message)
+    {
+        for (User user : message.getReceivers())
+        {
+            user.getChatHistory().getMessageList().remove(message);
+            user.getMessageBox().remove(message);
         }
     }
 
@@ -67,5 +75,15 @@ public class ChatServer
         blockList = blockMap.get(user);
 
         return blockList;
+    }
+
+    public ArrayList<User> getRegisteredUsers()
+    {
+        return registeredUsers;
+    }
+
+    public HashMap<User, ArrayList<User>> getBlockMap()
+    {
+        return blockMap;
     }
 }

@@ -53,6 +53,9 @@ class ChatServerTest
     @org.junit.jupiter.api.Test
     void undoMessage()
     {
+        user1.sendMessage(chatServer, new User[]{user2}, "undo");
+        user1.undoLastMessageSent(chatServer);
+        assertEquals(0, user2.getMessageBox().size());
     }
 
     @org.junit.jupiter.api.Test
