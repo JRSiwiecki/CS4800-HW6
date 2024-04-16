@@ -49,5 +49,8 @@ public class Main
 
         // View chat histories
         System.out.println(userA.getChatHistory().getMessageList());
+
+        // Iterator
+        System.out.println(userA.iterator().next());
     }
 }

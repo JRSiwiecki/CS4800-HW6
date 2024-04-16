@@ -1,8 +1,9 @@
 package memento.mediator;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class User
+public class User implements Iterable<Object>
 {
     private final String username;
     private final ArrayList<Message> messageBox = new ArrayList<>();
@@ -59,5 +60,11 @@ public class User
             System.out.println(message);
         }
         System.out.println("-------------------------------------");
+    }
+
+    @Override
+    public Iterator<Object> iterator()
+    {
+        return chatHistory.iterator(this);
     }
 }
